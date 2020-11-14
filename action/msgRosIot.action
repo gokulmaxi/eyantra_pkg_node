@@ -1,0 +1,13 @@
+# goal
+string protocol
+string mode
+string topic
+float64 final_x
+float64 final_y
+float64 final_theta 
+---
+# result
+bool flag_success
+---
+# feedback
+int8 percentage_complete
