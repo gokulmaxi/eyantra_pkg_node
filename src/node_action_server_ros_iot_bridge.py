@@ -20,7 +20,7 @@ class IotRosBridgeActionServer:
     # Constructor
     def __init__(self):
         # Initialize the Action Server
-        self.URL = "https://script.google.com/macros/s/AKfycbygqa5aGx3uhf-6LiTARBTewjo1jBjIw1DeH2FH7sdC09CJLNJh/exec"
+        
         self.pub_msg=msgRosIotAction()
         self._as = actionlib.ActionServer('/action_iot_ros',
                                           msgRosIotAction,
@@ -44,6 +44,7 @@ class IotRosBridgeActionServer:
         self._config_mqtt_pub_topic = param_config_iot['mqtt']['topic_pub']
         self._config_mqtt_qos = param_config_iot['mqtt']['qos']
         self._config_mqtt_sub_cb_ros_topic = param_config_iot['mqtt']['sub_cb_ros_topic']
+        self._google_scripts_id=param_config_iot['url']
         print(param_config_iot)
 
 
@@ -51,7 +52,7 @@ class IotRosBridgeActionServer:
         # Incoming message from MQTT Subscription will be published on a ROS Topic (/ros_iot_bridge/mqtt/sub).
         # ROS Nodes can subscribe to this ROS Topic (/ros_iot_bridge/mqtt/sub) to get messages from MQTT Subscription.
         self._handle_ros_pub = rospy.Publisher(self._config_mqtt_sub_cb_ros_topic, msgMqttSub, queue_size=10)
-
+        self.URL = "https://script.google.com/macros/s/"+self._google_scripts_id+"/exec"
 
         # Subscribe to MQTT Topic (eyrc/xYzqLm/iot_to_ros) which is defined in 'config_iot_ros.yaml'.
         # self.mqtt_sub_callback() function will be called when there is a message from MQTT Subscription.

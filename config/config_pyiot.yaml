@@ -9,3 +9,4 @@ config_iot:
     qos: 0
 
     sub_cb_ros_topic: "/ros_iot_bridge/mqtt/sub"   # ROS nodes can listen to this topic to receive data from MQTT
+  url: "AKfycbygqa5aGx3uhf-6LiTARBTewjo1jBjIw1DeH2FH7sdC09CJLNJh"
